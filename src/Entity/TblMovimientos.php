@@ -32,6 +32,13 @@ class TblMovimientos
     #[ORM\JoinColumn(nullable: false)]
     private ?TblTipoMovimiento $tipomovimiento = null;
 
+    public function __construct($tipomovimiento = null, $usuario = null, $producto = null, $cantidad = null, $fechahora = null)
+    {
+      $this->tipomovimiento = $tipomovimiento;
+      $this->usuario = $usuario;
+      $this->producto = $producto;
+      $this->cantidad = $cantidad;
+    }
     public function getId(): ?int
     {
         return $this->id;

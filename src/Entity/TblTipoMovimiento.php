@@ -27,9 +27,11 @@ class TblTipoMovimiento
     #[ORM\OneToMany(targetEntity: TblMovimientos::class, mappedBy: 'tipomovimiento')]
     private Collection $movimiento;
 
-    public function __construct()
+    public function __construct($nombre = null, $descripcion = null)
     {
-        $this->movimiento = new ArrayCollection();
+      $this->nombre = $nombre;
+      $this->descripcion = $descripcion;
+      $this->movimiento = new ArrayCollection();
     }
 
     public function getId(): ?int

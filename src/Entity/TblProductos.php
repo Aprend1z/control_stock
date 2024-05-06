@@ -37,9 +37,14 @@ class TblProductos
     #[ORM\JoinColumn(nullable: false)]
     private ?TblUnidades $unidad = null;
 
-    public function __construct()
+    public function __construct($nombre = null, $descripcion = null, $cantidad = null, $formato = null, $unidad = null)
     {
-        $this->movimientos = new ArrayCollection();
+      $this->nombre = $nombre;
+      $this->descripcion = $descripcion;
+      $this->cantidad = $cantidad;
+      $this->formato = $formato;
+      $this->unidad = $unidad;
+      $this->movimientos = new ArrayCollection();
     }
 
     public function getId(): ?int

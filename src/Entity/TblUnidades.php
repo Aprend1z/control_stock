@@ -27,9 +27,11 @@ class TblUnidades
     #[ORM\OneToMany(targetEntity: TblProductos::class, mappedBy: 'unidad')]
     private Collection $producto;
 
-    public function __construct()
+    public function __construct($nombre = null, $descripcion = null)
     {
-        $this->producto = new ArrayCollection();
+      $this->nombre = $nombre;
+      $this->descripcion = $descripcion;
+      $this->producto = new ArrayCollection();
     }
 
     public function getId(): ?int

@@ -39,9 +39,12 @@ class TblUsuarios implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(targetEntity: TblMovimientos::class, mappedBy: 'usuario')]
     private Collection $movimientos;
 
-    public function __construct()
+    public function __construct($username = null, $password = null, $roles = null) 
     {
-        $this->movimientos = new ArrayCollection();
+      $this->username = $username;
+      $this->password = $password;
+      $this->roles = ['ROLE_USER'];
+      $this->movimientos = new ArrayCollection();
     }
 
     public function getId(): ?int
