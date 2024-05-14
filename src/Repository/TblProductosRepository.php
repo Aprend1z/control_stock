@@ -11,10 +11,10 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class TblProductosRepository extends ServiceEntityRepository
 {
-    public function __construct(ManagerRegistry $registry)
-    {
-        parent::__construct($registry, TblProductos::class);
-    }
+  public function __construct(ManagerRegistry $registry)
+  {
+    parent::__construct($registry, TblProductos::class);
+  }
 
 //    /**
 //     * @return TblProductos[] Returns an array of TblProductos objects

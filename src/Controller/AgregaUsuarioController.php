@@ -6,7 +6,6 @@ use App\Entity\TblProductos;
 use App\Entity\TblUsuarios;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Form\AgregaUsuarioType;
-//use App\Form\AgregaProductoType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,25 +16,23 @@ class AgregaUsuarioController extends AbstractController
   private $entityManager;
 
   public function __construct(EntityManagerInterface $entityManager){
-    $this->entityManager = $entityManager;
+  $this->entityManager = $entityManager;
   }
-    #[Route('/agrega/usuario', name: 'app_agrega_usuario')]
-    public function index(Request $request): Response
-    {
-      $usuario = new TblUsuarios();
+  #[Route('/agrega/usuario', name: 'app_agrega_usuario')]
+  public function index(Request $request): Response
+  {
+    $usuario = new TblUsuarios();
 
-//    $producto = new TblProductos();
-      $formulario = $this->createForm(AgregaUsuarioType::class, $usuario);
-//      $formulario = $this->createForm(AgregaProductoType::class, $producto);
-      $formulario->handleRequest($request);
+    $formulario = $this->createForm(AgregaUsuarioType::class, $usuario);
+    $formulario->handleRequest($request);
 
-      if($formulario->isSubmitted() && $formulario->isValid()){
+    if($formulario->isSubmitted() && $formulario->isValid()){
 	$this->entityManager->persist($usuario);
 	$this->entityManager->flush();
-      }
-        return $this->render('agrega_usuario/index.html.twig', [
-            'controller_name' => 'AgregaUsuarioController',
-	    'formulario' => $formulario->createView(),
-        ]);
     }
+    return $this->render('agrega_usuario/index.html.twig', [
+      'controller_name' => 'AgregaUsuarioController',
+	    'formulario' => $formulario->createView(),
+    ]);
+  }
 }
